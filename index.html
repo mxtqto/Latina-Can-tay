@@ -5,261 +5,215 @@
 <title>LatinasCan$tay • LC$</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: 'Inter', sans-serif;
   color: white;
   text-align: center;
   overflow-x: hidden;
-  position: relative;
 }
 
-/* 🇺🇸 FLAG BACKGROUND */
+/* 💥 FLASH SCREEN */
+#flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 99999;
+  animation: flashOut 0.6s forwards;
+}
+
+@keyframes flashOut {
+  0% { opacity:1; }
+  100% { opacity:0; visibility:hidden; }
+}
+
+/* 🇺🇸 AMERICAN FLAG */
 .flag-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
-  opacity: 0.45;
-  background: linear-gradient(
-    90deg,
-    #bf0a30 0%,
-    #bf0a30 33%,
-    #ffffff 33%,
-    #ffffff 66%,
-    #002868 66%,
-    #002868 100%
+  z-index: -2;
+  background: repeating-linear-gradient(
+    to bottom,
+    #bf0a30 0px,
+    #bf0a30 40px,
+    #ffffff 40px,
+    #ffffff 80px
   );
-  background-size: 300% 300%;
-  animation: flagWave 14s ease-in-out infinite;
 }
 
-@keyframes flagWave {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.flag-overlay {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, #002868 0%, transparent 40%);
+  opacity: 0.8;
+  z-index: -1;
+  animation: wave 8s ease-in-out infinite;
 }
 
-/* GLITCH TITLE */
-.glitch {
-  font-size: 3.5rem;
-  font-weight: 900;
+@keyframes wave {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-30px); }
+  100% { transform: translateX(0); }
+}
+
+/* 🦅 EAGLE */
+#eagle {
+  position: fixed;
+  top: 30%;
+  left: -250px;
+  width: 220px;
+  z-index: 9999;
+  animation: eagleFly 3.5s ease-out forwards;
+}
+
+@keyframes eagleFly {
+  to { left: 110%; }
+}
+
+/* TITLES */
+h1 {
+  font-size: 3.2rem;
   margin-top: 40px;
-  text-shadow: 3px 3px #bf0a30, -3px -3px #002868;
+  text-shadow: 4px 4px #bf0a30, -4px -4px #002868;
 }
 
-/* HERO IMAGE */
 .hero {
   max-width: 420px;
   margin: 40px auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 60px rgba(0,0,0,0.7);
   animation: float 3s ease-in-out infinite;
 }
 
 .hero img {
   width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 50px black;
 }
 
 @keyframes float {
-  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
 
-/* TAGLINE */
-.tagline {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin: 20px;
-  animation: pulse 1.2s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity:1; }
-  50% { opacity:0.5; }
-  100% { opacity:1; }
-}
-
-/* CARD */
 .card {
   background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(10px);
-  padding: 35px;
+  padding: 30px;
+  margin: 30px auto;
   max-width: 900px;
-  margin: 40px auto;
   border-radius: 25px;
-  line-height: 1.7;
 }
 
-/* BUTTONS */
-.buttons {
-  margin: 50px 0;
-}
-
+/* 💸 BUTTONS */
 .btn {
+  display: inline-block;
+  margin: 15px;
   padding: 18px 40px;
   border-radius: 999px;
   font-weight: 900;
   font-size: 1.2rem;
   text-decoration: none;
-  margin: 10px;
-  display: inline-block;
-  transition: all 0.3s ease;
   color: white;
-  background: rgba(0,0,0,0.6);
 }
 
 .buy {
   background: #bf0a30;
-  box-shadow: 0 0 40px rgba(191,10,48,0.9);
-  animation: buyMadness 0.9s infinite;
+  animation: buyShake 0.7s infinite;
 }
 
-@keyframes buyMadness {
+@keyframes buyShake {
   0% { transform: scale(1) rotate(0); }
-  25% { transform: scale(1.1) rotate(-2deg); }
-  50% { transform: scale(1.15) rotate(2deg); }
-  75% { transform: scale(1.1) rotate(-1deg); }
-  100% { transform: scale(1) rotate(0); }
-}
-
-/* TELEGRAM BLINK + HOT */
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.3; }
-  100% { opacity: 1; }
+  50% { transform: scale(1.15) rotate(-3deg); }
 }
 
 .telegram {
   animation: blink 1s infinite;
-  position: relative;
 }
 
-.telegram::after {
-  content: "🔥 HOT";
-  position: absolute;
-  top: -12px;
-  right: -18px;
-  background: red;
-  color: white;
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 8px;
-}
-
-/* X SHAKE */
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  75% { transform: translateX(-3px); }
-  100% { transform: translateX(0); }
+@keyframes blink {
+  50% { opacity:0.4; }
 }
 
 .x-btn:hover {
   animation: shake 0.3s infinite;
 }
 
-/* EMOJI */
-.emoji {
-  font-size: 40px;
-  animation: floatEmoji 1s infinite;
-  margin-top: 20px;
+@keyframes shake {
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
 }
 
-@keyframes floatEmoji {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+/* 🧠 BRAINROT SCROLL */
+@media (max-width: 768px) {
+  body {
+    animation: mobileChaos 0.4s infinite alternate;
+  }
 }
 
-/* CA BOX */
-#ca-box {
-  margin: 30px auto;
-  font-size: 18px;
-  background: black;
-  padding: 12px;
-  border: 2px solid gold;
-  width: fit-content;
-}
-
-/* EAGLE */
-#eagle {
-  position: fixed;
-  top: 30%;
-  left: -220px;
-  width: 200px;
-  animation: fly 3s ease-out forwards;
-  z-index: 9999;
-}
-
-@keyframes fly {
-  to { left: 110%; }
+@keyframes mobileChaos {
+  from { transform: scale(1); }
+  to { transform: scale(1.02) rotate(0.3deg); }
 }
 
 footer {
   margin: 60px 0 30px;
   opacity: 0.8;
-  font-size: 0.85rem;
 }
 </style>
 </head>
 
 <body>
 
+<div id="flash"></div>
+
 <div class="flag-bg"></div>
+<div class="flag-overlay"></div>
 
 <img id="eagle" src="https://i.imgur.com/LZkQ9Qh.png">
-<audio id="eagleSound" src="https://www.myinstants.com/media/sounds/eagle.mp3"></audio>
 
-<h1 class="glitch">LatinasCan$tay</h1>
+<audio id="eagleSound" src="https://www.myinstants.com/media/sounds/eagle.mp3"></audio>
+<audio id="music" loop>
+  <source src="https://www.myinstants.com/media/sounds/usa-anthem.mp3">
+</audio>
+
+<h1>LatinasCan$tay</h1>
 <p><strong>LC$ • Solana</strong></p>
 
 <div class="hero">
   <img src="hero.jpg">
 </div>
 
-<div class="tagline">
-  She stayed for the pump 💃📈🔥
-</div>
-
 <div class="card">
-  <p>Latina$Can$tay isn’t a token — it’s a lifestyle warning.</p>
+  <p>She came for the vibes. She stayed for the pump.</p>
   <p>No roadmap. No utility. Just chaos.</p>
-  <p>If she buys the dip, you buy too.</p>
-  <p>She won’t stay. But the chart might.</p>
 </div>
 
-<div class="buttons">
-  <a href="#" class="btn buy">BUY LC$ 💸</a>
-  <a href="https://x.com/DevWSFN?s=20" class="btn x-btn" target="_blank">X (Twitter)</a>
-  <a href="https://t.me/+rixEmmHG6XI1MDI0" class="btn telegram" target="_blank">Telegram</a>
-</div>
+<a class="btn buy" href="#">BUY LC$ 💸</a>
+<a class="btn x-btn" href="https://x.com/DevWSFN?s=20" target="_blank">X</a>
+<a class="btn telegram" href="https://t.me/+rixEmmHG6XI1MDI0" target="_blank">Telegram 🔥</a>
 
-<div class="emoji">🦅💰🇺🇸</div>
-
-<div id="ca-box">
-  CA: <span id="ca">COMING SOON</span>
-</div>
-
-<footer>
-  🇺🇸 LC$ • Brainrot Certified
-</footer>
+<footer>🇺🇸 LC$ • Brainrot Certified</footer>
 
 <script>
-window.onload = () => {
+let activated = false;
+
+function activateChaos() {
+  if (activated) return;
+  activated = true;
   document.getElementById("eagleSound").play();
-};
+  document.getElementById("music").play();
+  setInterval(() => {
+    window.scrollBy(0, 2);
+  }, 20);
+}
+
+document.addEventListener("click", activateChaos);
+document.addEventListener("touchstart", activateChaos);
 </script>
 
 </body>
 </html>
+
 
