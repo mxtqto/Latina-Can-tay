@@ -6,56 +6,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.png">
 
+  <!-- Goofy font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: white;
       text-align: center;
       min-height: 100vh;
-      background: radial-gradient(
-        circle at top,
-        #b11226,
-        #7a0a0a 60%,
-        #3a0202
-      );
       padding: 40px 20px;
-      animation: subtleShake 6s infinite alternate;
+      background: linear-gradient(120deg, #002868, #ffffff, #bf0a30);
+      background-size: 600% 600%;
+      animation: usaBG 18s ease infinite;
+      overflow-x: hidden;
     }
 
-    @keyframes subtleShake {
-      0% { transform: translate(0,0); }
-      100% { transform: translate(0.6px, -0.6px); }
+    @keyframes usaBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* 🔥 TITLE BRAINROT */
+    /* 🇺🇸 TITLE */
     h1 {
-      font-size: 3.3rem;
+      font-size: 3.4rem;
+      margin-bottom: 6px;
+      background: linear-gradient(
+        90deg,
+        #002868,
+        #ffffff,
+        #bf0a30,
+        #002868
+      );
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: titleUSA 5s linear infinite;
       letter-spacing: -1px;
-      margin-bottom: 10px;
-      animation: titleChaos 3.5s infinite;
-      text-shadow:
-        2px 2px #bf0a30,
-        -2px -2px #ffffff22;
     }
 
-    @keyframes titleChaos {
-      0% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-4px) rotate(-0.5deg); }
-      50% { transform: translateY(0) rotate(0.5deg); }
-      75% { transform: translateY(3px) rotate(-0.3deg); }
-      100% { transform: translateY(0) rotate(0deg); }
+    @keyframes titleUSA {
+      to { background-position: 300% center; }
     }
 
     h2 {
       font-weight: normal;
-      opacity: 0.85;
-      margin-bottom: 30px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    /* BUTTON ZONE (TOP PRIORITY) */
+    .cta {
+      margin-bottom: 35px;
+    }
+
+    .buy {
+      position: relative;
+      display: inline-block;
+      padding: 20px 50px;
+      background: white;
+      color: #bf0a30;
+      border-radius: 999px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-decoration: none;
+      animation: buyPulse 1.6s infinite;
+      margin: 10px;
+    }
+
+    @keyframes buyPulse {
+      50% { transform: scale(1.1); }
+    }
+
+    .buy img {
+      position: absolute;
+      bottom: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65px;
+      pointer-events: none;
+    }
+
+    .wallet {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 30px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.35);
+      cursor: pointer;
+      font-weight: bold;
+      animation: walletGlow 2.5s infinite;
+    }
+
+    @keyframes walletGlow {
+      50% { box-shadow: 0 0 18px rgba(255,255,255,0.6); }
+    }
+
+    .links a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: white;
+      background: rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+
+    .links a:hover {
+      background: rgba(0,0,0,0.55);
+      transform: translateY(-3px);
     }
 
     /* HERO */
@@ -72,94 +135,30 @@
     .hero img {
       width: 100%;
       border-radius: 24px;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.45);
     }
 
-    /* CARD */
+    /* DESCRIPTION */
     .card {
       max-width: 760px;
-      margin: 0 auto 40px;
-      background: rgba(0,0,0,0.32);
-      padding: 30px;
-      border-radius: 24px;
-      line-height: 1.65;
-      font-size: 1.05rem;
+      margin: 0 auto 45px;
+      background: rgba(0,0,0,0.35);
+      padding: 32px;
+      border-radius: 26px;
+      line-height: 1.7;
+      font-size: 1.15rem;
+      font-family: 'Comic Neue', cursive;
       backdrop-filter: blur(6px);
     }
 
     .card p + p {
-      margin-top: 16px;
-    }
-
-    /* BUY */
-    .buy {
-      position: relative;
-      display: inline-block;
-      padding: 20px 48px;
-      background: white;
-      color: #9b111e;
-      border-radius: 999px;
-      font-size: 1.3rem;
-      font-weight: 800;
-      text-decoration: none;
-      animation: buyPulse 1.6s infinite;
-    }
-
-    @keyframes buyPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    .buy img {
-      position: absolute;
-      bottom: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70px;
-      pointer-events: none;
-    }
-
-    /* FAKE WALLET */
-    .wallet {
-      margin-top: 25px;
-      display: inline-block;
-      padding: 12px 26px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.15);
-      cursor: pointer;
-      animation: walletGlow 2.5s infinite;
-    }
-
-    @keyframes walletGlow {
-      50% { box-shadow: 0 0 18px rgba(255,255,255,0.4); }
-    }
-
-    /* LINKS */
-    .links {
-      margin-top: 35px;
-    }
-
-    .links a {
-      display: inline-block;
-      margin: 12px;
-      padding: 12px 28px;
-      border-radius: 999px;
-      text-decoration: none;
-      color: white;
-      background: rgba(255,255,255,0.18);
-      transition: 0.2s ease;
-    }
-
-    .links a:hover {
-      background: rgba(255,255,255,0.32);
-      transform: translateY(-3px);
+      margin-top: 18px;
     }
 
     footer {
       margin-top: 60px;
       font-size: 0.9rem;
-      opacity: 0.75;
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -169,10 +168,27 @@
   <h1>LatinasCan$tay</h1>
   <h2>LC$ • Solana</h2>
 
+  <!-- 🔥 CTA FIRST -->
+  <div class="cta">
+    <a href="#" class="buy">
+      BUY LC$
+      <img src="fire.gif" alt="fire">
+    </a>
+
+    <div class="wallet" onclick="fakeWallet()">🔌 Connect Wallet</div>
+
+    <div class="links">
+      <a href="https://x.com/DevWSFN?s=20" target="_blank">X</a>
+      <a href="https://t.me/+rixEmmHG6XI1MDI0" target="_blank">Telegram</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
   <div class="hero">
     <img src="hero.jpg" alt="LatinasCan$tay">
   </div>
 
+  <!-- DESCRIPTION -->
   <div class="card">
     <p>
       She came for the vibes.<br>
@@ -191,20 +207,6 @@
     </p>
   </div>
 
-  <a href="#" class="buy">
-    BUY LC$
-    <img src="fire.gif" alt="fire">
-  </a>
-
-  <div class="wallet" onclick="fakeWallet()">
-    🔌 Connect Wallet
-  </div>
-
-  <div class="links">
-    <a href="https://x.com/DevWSFN?s=20" target="_blank">X</a>
-    <a href="https://t.me/+rixEmmHG6XI1MDI0" target="_blank">Telegram</a>
-  </div>
-
   <footer>
     She won’t stay.<br>
     But the chart might. 💃📈
@@ -212,20 +214,17 @@
 
   <script>
     function fakeWallet() {
-      const messages = [
-        "Wallet connected (trust me bro)",
+      const msgs = [
+        "Wallet connected (emotionally)",
         "Phantom detected 👻",
         "Balance: vibes only",
-        "Connection failed successfully",
-        "You are now emotionally invested"
+        "Connected successfully (probably)",
+        "You are now overexposed"
       ];
-      alert(messages[Math.floor(Math.random() * messages.length)]);
+      alert(msgs[Math.floor(Math.random() * msgs.length)]);
     }
   </script>
 
 </body>
 </html>
-
-
-
 
