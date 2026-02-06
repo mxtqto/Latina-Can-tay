@@ -3,45 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <title>LatinasCan$tay • LC$</title>
-<link rel="icon" type="image/png" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-  body {
-  background: url("https://i.imgur.com/8QZ7Z8A.gif") no-repeat center center fixed;
-  background-size: cover;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   color: white;
   text-align: center;
-  background: linear-gradient(270deg,#bf0a30,#ffffff,#002868,#bf0a30);
-  background-size: 800% 800%;
-  animation: flagWave 10s ease infinite;
   overflow-x: hidden;
+  position: relative;
 }
-  body::before {
-  content: "";
+
+/* 🇺🇸 FLAG BACKGROUND */
+.flag-bg {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.45;
   background: linear-gradient(
-    120deg,
+    90deg,
     #bf0a30 0%,
+    #bf0a30 33%,
     #ffffff 33%,
+    #ffffff 66%,
     #002868 66%,
-    #bf0a30 100%
+    #002868 100%
   );
   background-size: 300% 300%;
-  animation: flagWave 12s ease-in-out infinite;
-  opacity: 0.35;
-  z-index: -1;
+  animation: flagWave 14s ease-in-out infinite;
 }
 
 @keyframes flagWave {
@@ -50,22 +47,15 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* GLITCH TITLE */
 .glitch {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 900;
+  margin-top: 40px;
   text-shadow: 3px 3px #bf0a30, -3px -3px #002868;
-  animation: glitch 2.5s infinite;
 }
 
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-3px,2px); }
-  40% { transform: translate(3px,-2px); }
-  60% { transform: translate(-2px,3px); }
-  80% { transform: translate(2px,-3px); }
-  100% { transform: translate(0); }
-}
-
+/* HERO IMAGE */
 .hero {
   max-width: 420px;
   margin: 40px auto;
@@ -84,8 +74,9 @@ body {
   50% { transform: translateY(-20px); }
 }
 
+/* TAGLINE */
 .tagline {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   margin: 20px;
   animation: pulse 1.2s infinite;
@@ -97,9 +88,10 @@ body {
   100% { opacity:1; }
 }
 
+/* CARD */
 .card {
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
   padding: 35px;
   max-width: 900px;
   margin: 40px auto;
@@ -107,22 +99,9 @@ body {
   line-height: 1.7;
 }
 
-.fake-chart {
-  margin: 50px auto;
-  width: 80%;
-  height: 160px;
-  background: linear-gradient(90deg,#00ff99,#00cc66);
-  border-radius: 20px;
-  animation: chartMove 1.8s infinite alternate;
-}
-
-@keyframes chartMove {
-  from { clip-path: polygon(0 80%,100% 30%,100% 100%,0 100%); }
-  to { clip-path: polygon(0 40%,100% 10%,100% 100%,0 100%); }
-}
-
+/* BUTTONS */
 .buttons {
-  margin: 60px 0;
+  margin: 50px 0;
 }
 
 .btn {
@@ -134,11 +113,12 @@ body {
   margin: 10px;
   display: inline-block;
   transition: all 0.3s ease;
+  color: white;
+  background: rgba(0,0,0,0.6);
 }
 
 .buy {
   background: #bf0a30;
-  color: white;
   box-shadow: 0 0 40px rgba(191,10,48,0.9);
   animation: buyMadness 0.9s infinite;
 }
@@ -151,8 +131,78 @@ body {
   100% { transform: scale(1) rotate(0); }
 }
 
-.btn:hover {
-  transform: scale(1.2);
+/* TELEGRAM BLINK + HOT */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.telegram {
+  animation: blink 1s infinite;
+  position: relative;
+}
+
+.telegram::after {
+  content: "🔥 HOT";
+  position: absolute;
+  top: -12px;
+  right: -18px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+/* X SHAKE */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+.x-btn:hover {
+  animation: shake 0.3s infinite;
+}
+
+/* EMOJI */
+.emoji {
+  font-size: 40px;
+  animation: floatEmoji 1s infinite;
+  margin-top: 20px;
+}
+
+@keyframes floatEmoji {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* CA BOX */
+#ca-box {
+  margin: 30px auto;
+  font-size: 18px;
+  background: black;
+  padding: 12px;
+  border: 2px solid gold;
+  width: fit-content;
+}
+
+/* EAGLE */
+#eagle {
+  position: fixed;
+  top: 30%;
+  left: -220px;
+  width: 200px;
+  animation: fly 3s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes fly {
+  to { left: 110%; }
 }
 
 footer {
@@ -165,6 +215,11 @@ footer {
 
 <body>
 
+<div class="flag-bg"></div>
+
+<img id="eagle" src="https://i.imgur.com/LZkQ9Qh.png">
+<audio id="eagleSound" src="https://www.myinstants.com/media/sounds/eagle.mp3"></audio>
+
 <h1 class="glitch">LatinasCan$tay</h1>
 <p><strong>LC$ • Solana</strong></p>
 
@@ -176,24 +231,35 @@ footer {
   She stayed for the pump 💃📈🔥
 </div>
 
-<div class="fake-chart"></div>
-
 <div class="card">
   <p>Latina$Can$tay isn’t a token — it’s a lifestyle warning.</p>
   <p>No roadmap. No utility. Just chaos.</p>
   <p>If she buys the dip, you buy too.</p>
-  <p>Enter at your own risk.</p>
+  <p>She won’t stay. But the chart might.</p>
 </div>
 
 <div class="buttons">
   <a href="#" class="btn buy">BUY LC$ 💸</a>
-  <a href="https://x.com/DevWSFN?s=20" class="btn" target="_blank">X (Twitter)</a>
-  <a href="https://t.me/+rixEmmHG6XI1MDI0" class="btn" target="_blank">Telegram</a>
+  <a href="https://x.com/DevWSFN?s=20" class="btn x-btn" target="_blank">X (Twitter)</a>
+  <a href="https://t.me/+rixEmmHG6XI1MDI0" class="btn telegram" target="_blank">Telegram</a>
+</div>
+
+<div class="emoji">🦅💰🇺🇸</div>
+
+<div id="ca-box">
+  CA: <span id="ca">COMING SOON</span>
 </div>
 
 <footer>
   🇺🇸 LC$ • Brainrot Certified
 </footer>
 
+<script>
+window.onload = () => {
+  document.getElementById("eagleSound").play();
+};
+</script>
+
 </body>
 </html>
+
