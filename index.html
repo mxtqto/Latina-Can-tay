@@ -15,96 +15,117 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0b0b0b, #151515);
       color: white;
       text-align: center;
-      padding: 30px;
+      min-height: 100vh;
+      background: linear-gradient(
+        -45deg,
+        #7a0a0a,
+        #9b111e,
+        #b11226,
+        #8c0d16
+      );
+      background-size: 400% 400%;
+      animation: redFlow 18s ease infinite;
+      padding: 40px 20px;
+    }
+
+    @keyframes redFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
     }
 
     h2 {
       font-weight: normal;
-      opacity: 0.8;
-      margin-bottom: 30px;
+      opacity: 0.85;
+      margin-bottom: 35px;
     }
 
     .hero {
       max-width: 380px;
-      margin: 0 auto 30px;
+      margin: 0 auto 35px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      50% { transform: translateY(-12px); }
     }
 
     .hero img {
       width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      border-radius: 22px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
     }
 
     .card {
-      max-width: 700px;
-      margin: 0 auto 40px;
-      background: rgba(255,255,255,0.05);
-      padding: 25px;
-      border-radius: 20px;
-      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto 45px;
+      background: rgba(0,0,0,0.25);
+      padding: 28px;
+      border-radius: 22px;
+      line-height: 1.65;
+      font-size: 1.05rem;
+      backdrop-filter: blur(4px);
     }
 
     /* BUY BUTTON */
     .buy {
       position: relative;
       display: inline-block;
-      padding: 16px 38px;
-      background: #bf0a30;
+      padding: 18px 42px;
+      background: white;
+      color: #9b111e;
       border-radius: 999px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
       text-decoration: none;
-      margin: 20px 0;
+      transition: transform 0.15s ease;
+    }
+
+    .buy:hover {
+      transform: scale(1.06);
     }
 
     .buy img {
       position: absolute;
-      bottom: -28px;
+      bottom: -26px;
       left: 50%;
       transform: translateX(-50%);
-      width: 70px;
+      width: 65px;
       pointer-events: none;
     }
 
-    /* LINKS */
+    .links {
+      margin-top: 35px;
+    }
+
     .links a {
       display: inline-block;
-      margin: 15px;
+      margin: 12px;
       padding: 12px 26px;
       border-radius: 999px;
       text-decoration: none;
       color: white;
-      background: #1f1f1f;
+      background: rgba(255,255,255,0.15);
       transition: 0.2s;
     }
 
     .links a:hover {
-      background: #333;
+      background: rgba(255,255,255,0.28);
       transform: translateY(-2px);
     }
 
-    /* EAGLE */
-    .eagle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 110px;
-      opacity: 0.85;
-    }
-
     footer {
-      margin-top: 50px;
+      margin-top: 60px;
       font-size: 0.9rem;
-      opacity: 0.6;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -126,36 +147,21 @@
     Just chaos, passion, and questionable financial decisions.</p>
   </div>
 
-  <!-- BUY -->
-  <a href="#" class="buy" id="buyBtn">
+  <a href="#" class="buy">
     BUY LC$
     <img src="fire.gif" alt="fire">
   </a>
 
-  <!-- LINKS -->
   <div class="links">
     <a href="https://x.com/DevWSFN?s=20" target="_blank">X</a>
     <a href="https://t.me/+rixEmmHG6XI1MDI0" target="_blank">Telegram</a>
   </div>
 
-  <!-- EAGLE -->
-  <img src="eagle.png" class="eagle" alt="eagle">
-  <audio id="eagleSound" src="eagle.mp3"></audio>
-
   <footer>
     Enter at your own risk 💃📈
   </footer>
 
-  <script>
-    // Eagle sound on first click only (browser-safe)
-    let played = false;
-    document.addEventListener("click", () => {
-      if (played) return;
-      played = true;
-      document.getElementById("eagleSound").play();
-    });
-  </script>
-
 </body>
 </html>
+
 
