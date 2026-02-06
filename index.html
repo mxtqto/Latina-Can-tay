@@ -18,28 +18,45 @@
       color: white;
       text-align: center;
       min-height: 100vh;
-      background: linear-gradient(
-        -45deg,
-        #7a0a0a,
-        #9b111e,
+      background: radial-gradient(
+        circle at top,
         #b11226,
-        #8c0d16
+        #7a0a0a 60%,
+        #4a0404
       );
-      background-size: 400% 400%;
-      animation: redFlow 18s ease infinite;
+      overflow-x: hidden;
       padding: 40px 20px;
     }
 
-    @keyframes redFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* 🧠 subtle brainrot motion */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.05),
+        transparent 60%
+      );
+      animation: drift 12s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(-10%); }
+      50% { transform: translateX(10%); }
+      100% { transform: translateX(-10%); }
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 8px;
+      font-size: 3.2rem;
       letter-spacing: -1px;
+      margin-bottom: 8px;
+      animation: pulseText 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseText {
+      50% { transform: scale(1.03); }
     }
 
     h2 {
@@ -48,84 +65,93 @@
       margin-bottom: 35px;
     }
 
+    /* HERO */
     .hero {
-      max-width: 380px;
+      max-width: 400px;
       margin: 0 auto 35px;
       animation: float 4s ease-in-out infinite;
     }
 
     @keyframes float {
-      50% { transform: translateY(-12px); }
+      50% { transform: translateY(-14px); }
     }
 
     .hero img {
       width: 100%;
-      border-radius: 22px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      border-radius: 24px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
     }
 
+    /* TEXT CARD */
     .card {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto 45px;
-      background: rgba(0,0,0,0.25);
-      padding: 28px;
-      border-radius: 22px;
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 24px;
       line-height: 1.65;
       font-size: 1.05rem;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
 
-    /* BUY BUTTON */
+    .card p + p {
+      margin-top: 16px;
+    }
+
+    /* BUY */
     .buy {
       position: relative;
       display: inline-block;
-      padding: 18px 42px;
+      padding: 20px 48px;
       background: white;
       color: #9b111e;
       border-radius: 999px;
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.3rem;
+      font-weight: 800;
       text-decoration: none;
-      transition: transform 0.15s ease;
+      animation: buyPulse 1.8s infinite;
     }
 
-    .buy:hover {
-      transform: scale(1.06);
+    @keyframes buyPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
     }
 
     .buy img {
       position: absolute;
-      bottom: -26px;
+      bottom: -28px;
       left: 50%;
       transform: translateX(-50%);
-      width: 65px;
+      width: 70px;
       pointer-events: none;
     }
 
+    /* LINKS */
     .links {
-      margin-top: 35px;
+      margin-top: 40px;
     }
 
     .links a {
       display: inline-block;
       margin: 12px;
-      padding: 12px 26px;
+      padding: 12px 28px;
       border-radius: 999px;
       text-decoration: none;
       color: white;
-      background: rgba(255,255,255,0.15);
-      transition: 0.2s;
+      background: rgba(255,255,255,0.18);
+      transition: 0.2s ease;
     }
 
     .links a:hover {
-      background: rgba(255,255,255,0.28);
-      transform: translateY(-2px);
+      background: rgba(255,255,255,0.32);
+      transform: translateY(-3px);
     }
 
     footer {
       margin-top: 60px;
       font-size: 0.9rem;
-      opacity: 0.7;
+      opacity: 0.75;
     }
   </style>
 </head>
@@ -140,11 +166,21 @@
   </div>
 
   <div class="card">
-    <p>She came for the vibes.<br>
-    She stayed for the pump.</p>
+    <p>
+      She came for the vibes.<br>
+      She stayed for the pump.
+    </p>
 
-    <p><br>No roadmap. No utility.<br>
-    Just chaos, passion, and questionable financial decisions.</p>
+    <p>
+      No roadmap. No utility.<br>
+      Just chaos, passion, and questionable financial decisions.
+    </p>
+
+    <p>
+      If she buys the dip,<br>
+      you don’t argue.<br>
+      You buy too.
+    </p>
   </div>
 
   <a href="#" class="buy">
@@ -158,10 +194,12 @@
   </div>
 
   <footer>
-    Enter at your own risk 💃📈
+    She won’t stay.<br>
+    But the chart might. 💃📈
   </footer>
 
 </body>
 </html>
+
 
 
