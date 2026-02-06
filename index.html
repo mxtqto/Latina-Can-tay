@@ -1,264 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>LatinasCan$tay • LC$</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>LatinasCan$tay • LC$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0b0b0b, #151515);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
 
-body {
-  font-family: 'Inter', sans-serif;
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-  position: relative;
-}
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
 
-/* 🇺🇸 FLAG BACKGROUND */
-.flag-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.45;
-  background: linear-gradient(
-    90deg,
-    #bf0a30 0%,
-    #bf0a30 33%,
-    #ffffff 33%,
-    #ffffff 66%,
-    #002868 66%,
-    #002868 100%
-  );
-  background-size: 300% 300%;
-  animation: flagWave 14s ease-in-out infinite;
-}
+    h2 {
+      font-weight: normal;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
 
-@keyframes flagWave {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    .hero {
+      max-width: 380px;
+      margin: 0 auto 30px;
+    }
 
-/* GLITCH TITLE */
-.glitch {
-  font-size: 3.5rem;
-  font-weight: 900;
-  margin-top: 40px;
-  text-shadow: 3px 3px #bf0a30, -3px -3px #002868;
-}
+    .hero img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    }
 
-/* HERO IMAGE */
-.hero {
-  max-width: 420px;
-  margin: 40px auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 60px rgba(0,0,0,0.7);
-  animation: float 3s ease-in-out infinite;
-}
+    .card {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 20px;
+      line-height: 1.6;
+    }
 
-.hero img {
-  width: 100%;
-}
+    /* BUY BUTTON */
+    .buy {
+      position: relative;
+      display: inline-block;
+      padding: 16px 38px;
+      background: #bf0a30;
+      border-radius: 999px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      margin: 20px 0;
+    }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
+    .buy img {
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      pointer-events: none;
+    }
 
-/* TAGLINE */
-.tagline {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin: 20px;
-  animation: pulse 1.2s infinite;
-}
+    /* LINKS */
+    .links a {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: white;
+      background: #1f1f1f;
+      transition: 0.2s;
+    }
 
-@keyframes pulse {
-  0% { opacity:1; }
-  50% { opacity:0.5; }
-  100% { opacity:1; }
-}
+    .links a:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
 
-/* CARD */
-.card {
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(10px);
-  padding: 35px;
-  max-width: 900px;
-  margin: 40px auto;
-  border-radius: 25px;
-  line-height: 1.7;
-}
+    /* EAGLE */
+    .eagle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 110px;
+      opacity: 0.85;
+    }
 
-/* BUTTONS */
-.buttons {
-  margin: 50px 0;
-}
-
-.btn {
-  padding: 18px 40px;
-  border-radius: 999px;
-  font-weight: 900;
-  font-size: 1.2rem;
-  text-decoration: none;
-  margin: 10px;
-  display: inline-block;
-  transition: all 0.3s ease;
-  color: white;
-  background: rgba(0,0,0,0.6);
-}
-
-.buy {
-  background: #bf0a30;
-  box-shadow: 0 0 40px rgba(191,10,48,0.9);
-  animation: buyMadness 0.9s infinite;
-}
-
-@keyframes buyMadness {
-  0% { transform: scale(1) rotate(0); }
-  25% { transform: scale(1.1) rotate(-2deg); }
-  50% { transform: scale(1.15) rotate(2deg); }
-  75% { transform: scale(1.1) rotate(-1deg); }
-  100% { transform: scale(1) rotate(0); }
-}
-
-/* TELEGRAM BLINK + HOT */
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.3; }
-  100% { opacity: 1; }
-}
-
-.telegram {
-  animation: blink 1s infinite;
-  position: relative;
-}
-
-.telegram::after {
-  content: "🔥 HOT";
-  position: absolute;
-  top: -12px;
-  right: -18px;
-  background: red;
-  color: white;
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 8px;
-}
-
-/* X SHAKE */
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  75% { transform: translateX(-3px); }
-  100% { transform: translateX(0); }
-}
-
-.x-btn:hover {
-  animation: shake 0.3s infinite;
-}
-
-/* EMOJI */
-.emoji {
-  font-size: 40px;
-  animation: floatEmoji 1s infinite;
-  margin-top: 20px;
-}
-
-@keyframes floatEmoji {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
-
-/* CA BOX */
-#ca-box {
-  margin: 30px auto;
-  font-size: 18px;
-  background: black;
-  padding: 12px;
-  border: 2px solid gold;
-  width: fit-content;
-}
-
-/* EAGLE */
-#eagle {
-  position: fixed;
-  top: 30%;
-  left: -220px;
-  width: 200px;
-  animation: fly 3s ease-out forwards;
-  z-index: 9999;
-}
-
-@keyframes fly {
-  to { left: 110%; }
-}
-
-footer {
-  margin: 60px 0 30px;
-  opacity: 0.8;
-  font-size: 0.85rem;
-}
-</style>
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="flag-bg"></div>
+  <h1>LatinasCan$tay</h1>
+  <h2>LC$ • Solana</h2>
 
-<img id="eagle" src="https://i.imgur.com/LZkQ9Qh.png">
-<audio id="eagleSound" src="https://www.myinstants.com/media/sounds/eagle.mp3"></audio>
+  <div class="hero">
+    <img src="hero.jpg" alt="LatinasCan$tay">
+  </div>
 
-<h1 class="glitch">LatinasCan$tay</h1>
-<p><strong>LC$ • Solana</strong></p>
+  <div class="card">
+    <p>She came for the vibes.<br>
+    She stayed for the pump.</p>
 
-<div class="hero">
-  <img src="hero.jpg">
-</div>
+    <p><br>No roadmap. No utility.<br>
+    Just chaos, passion, and questionable financial decisions.</p>
+  </div>
 
-<div class="tagline">
-  She stayed for the pump 💃📈🔥
-</div>
+  <!-- BUY -->
+  <a href="#" class="buy" id="buyBtn">
+    BUY LC$
+    <img src="fire.gif" alt="fire">
+  </a>
 
-<div class="card">
-  <p>Latina$Can$tay isn’t a token — it’s a lifestyle warning.</p>
-  <p>No roadmap. No utility. Just chaos.</p>
-  <p>If she buys the dip, you buy too.</p>
-  <p>She won’t stay. But the chart might.</p>
-</div>
+  <!-- LINKS -->
+  <div class="links">
+    <a href="https://x.com/DevWSFN?s=20" target="_blank">X</a>
+    <a href="https://t.me/+rixEmmHG6XI1MDI0" target="_blank">Telegram</a>
+  </div>
 
-<div class="buttons">
-  <a href="#" class="btn buy">BUY LC$ 💸</a>
-  <a href="https://x.com/DevWSFN?s=20" class="btn x-btn" target="_blank">X (Twitter)</a>
-  <a href="https://t.me/+rixEmmHG6XI1MDI0" class="btn telegram" target="_blank">Telegram</a>
-</div>
+  <!-- EAGLE -->
+  <img src="eagle.png" class="eagle" alt="eagle">
+  <audio id="eagleSound" src="eagle.mp3"></audio>
 
-<div class="emoji">🦅💰🇺🇸</div>
+  <footer>
+    Enter at your own risk 💃📈
+  </footer>
 
-<div id="ca-box">
-  CA: <span id="ca">COMING SOON</span>
-</div>
-
-<footer>
-  🇺🇸 LC$ • Brainrot Certified
-</footer>
-
-<script>
-window.onload = () => {
-  document.getElementById("eagleSound").play();
-};
-</script>
+  <script>
+    // Eagle sound on first click only (browser-safe)
+    let played = false;
+    document.addEventListener("click", () => {
+      if (played) return;
+      played = true;
+      document.getElementById("eagleSound").play();
+    });
+  </script>
 
 </body>
 </html>
+
