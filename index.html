@@ -22,47 +22,40 @@
         circle at top,
         #b11226,
         #7a0a0a 60%,
-        #4a0404
+        #3a0202
       );
-      overflow-x: hidden;
       padding: 40px 20px;
+      animation: subtleShake 6s infinite alternate;
     }
 
-    /* 🧠 subtle brainrot motion */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(
-        120deg,
-        rgba(255,255,255,0.05),
-        transparent 60%
-      );
-      animation: drift 12s ease-in-out infinite;
-      pointer-events: none;
+    @keyframes subtleShake {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(0.6px, -0.6px); }
     }
 
-    @keyframes drift {
-      0% { transform: translateX(-10%); }
-      50% { transform: translateX(10%); }
-      100% { transform: translateX(-10%); }
-    }
-
+    /* 🔥 TITLE BRAINROT */
     h1 {
-      font-size: 3.2rem;
+      font-size: 3.3rem;
       letter-spacing: -1px;
-      margin-bottom: 8px;
-      animation: pulseText 3s ease-in-out infinite;
+      margin-bottom: 10px;
+      animation: titleChaos 3.5s infinite;
+      text-shadow:
+        2px 2px #bf0a30,
+        -2px -2px #ffffff22;
     }
 
-    @keyframes pulseText {
-      50% { transform: scale(1.03); }
+    @keyframes titleChaos {
+      0% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-4px) rotate(-0.5deg); }
+      50% { transform: translateY(0) rotate(0.5deg); }
+      75% { transform: translateY(3px) rotate(-0.3deg); }
+      100% { transform: translateY(0) rotate(0deg); }
     }
 
     h2 {
       font-weight: normal;
       opacity: 0.85;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     /* HERO */
@@ -82,11 +75,11 @@
       box-shadow: 0 30px 70px rgba(0,0,0,0.5);
     }
 
-    /* TEXT CARD */
+    /* CARD */
     .card {
       max-width: 760px;
-      margin: 0 auto 45px;
-      background: rgba(0,0,0,0.3);
+      margin: 0 auto 40px;
+      background: rgba(0,0,0,0.32);
       padding: 30px;
       border-radius: 24px;
       line-height: 1.65;
@@ -109,12 +102,12 @@
       font-size: 1.3rem;
       font-weight: 800;
       text-decoration: none;
-      animation: buyPulse 1.8s infinite;
+      animation: buyPulse 1.6s infinite;
     }
 
     @keyframes buyPulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
+      50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
 
@@ -127,9 +120,24 @@
       pointer-events: none;
     }
 
+    /* FAKE WALLET */
+    .wallet {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+      animation: walletGlow 2.5s infinite;
+    }
+
+    @keyframes walletGlow {
+      50% { box-shadow: 0 0 18px rgba(255,255,255,0.4); }
+    }
+
     /* LINKS */
     .links {
-      margin-top: 40px;
+      margin-top: 35px;
     }
 
     .links a {
@@ -188,6 +196,10 @@
     <img src="fire.gif" alt="fire">
   </a>
 
+  <div class="wallet" onclick="fakeWallet()">
+    🔌 Connect Wallet
+  </div>
+
   <div class="links">
     <a href="https://x.com/DevWSFN?s=20" target="_blank">X</a>
     <a href="https://t.me/+rixEmmHG6XI1MDI0" target="_blank">Telegram</a>
@@ -198,8 +210,22 @@
     But the chart might. 💃📈
   </footer>
 
+  <script>
+    function fakeWallet() {
+      const messages = [
+        "Wallet connected (trust me bro)",
+        "Phantom detected 👻",
+        "Balance: vibes only",
+        "Connection failed successfully",
+        "You are now emotionally invested"
+      ];
+      alert(messages[Math.floor(Math.random() * messages.length)]);
+    }
+  </script>
+
 </body>
 </html>
+
 
 
 
