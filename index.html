@@ -5,194 +5,260 @@
 <title>LatinasCan$tay • LC$</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family: Arial, sans-serif;
-  color:white;
-  text-align:center;
-  overflow-x:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* 🇺🇸 REAL FLAG VIDEO */
-.flag-video{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  object-fit:cover;
-  width:100%;
-  height:100%;
+body {
+  font-family: 'Inter', sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* DARK OVERLAY */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.45);
-  z-index:-2;
+/* 🇺🇸 FLAG BACKGROUND */
+.flag-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.45;
+  background: linear-gradient(
+    90deg,
+    #bf0a30 0%,
+    #bf0a30 33%,
+    #ffffff 33%,
+    #ffffff 66%,
+    #002868 66%,
+    #002868 100%
+  );
+  background-size: 300% 300%;
+  animation: flagWave 14s ease-in-out infinite;
 }
 
-/* 🦅 EAGLE */
-#eagle{
-  position:fixed;
-  top:20%;
-  left:-300px;
-  width:220px;
-  z-index:9999;
-  animation:eagleFly 4s ease-out forwards;
+@keyframes flagWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@keyframes eagleFly{
-  to{left:110%}
+/* GLITCH TITLE */
+.glitch {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-top: 40px;
+  text-shadow: 3px 3px #bf0a30, -3px -3px #002868;
 }
 
-/* GLITCH */
-@keyframes glitch{
-  0%{filter:none}
-  20%{filter:hue-rotate(90deg)}
-  40%{filter:invert(1)}
-  60%{filter:contrast(200%)}
-  100%{filter:none}
+/* HERO IMAGE */
+.hero {
+  max-width: 420px;
+  margin: 40px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0,0,0,0.7);
+  animation: float 3s ease-in-out infinite;
 }
 
-/* HERO */
-h1{
-  margin-top:40px;
-  font-size:3rem;
-  text-shadow:3px 3px red,-3px -3px blue;
+.hero img {
+  width: 100%;
 }
 
-.card{
-  background:rgba(0,0,0,0.7);
-  padding:25px;
-  margin:30px auto;
-  max-width:800px;
-  border-radius:20px;
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
-/* 🔥 BUY FIRE */
-.buy{
-  position:relative;
-  display:inline-block;
-  padding:18px 40px;
-  background:#bf0a30;
-  border-radius:999px;
-  font-size:1.3rem;
-  font-weight:900;
-  color:white;
-  text-decoration:none;
-  margin:20px;
+/* TAGLINE */
+.tagline {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 20px;
+  animation: pulse 1.2s infinite;
 }
 
-.buy img{
-  position:absolute;
-  bottom:-30px;
-  left:50%;
-  transform:translateX(-50%);
-  width:80px;
+@keyframes pulse {
+  0% { opacity:1; }
+  50% { opacity:0.5; }
+  100% { opacity:1; }
 }
 
-/* 📈 FAKE CHART */
-#chart{
-  height:120px;
-  background:linear-gradient(to top,#00ff00,#006400);
-  width:10%;
-  margin:20px auto;
-  animation:pump 3s infinite;
+/* CARD */
+.card {
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  padding: 35px;
+  max-width: 900px;
+  margin: 40px auto;
+  border-radius: 25px;
+  line-height: 1.7;
 }
 
-@keyframes pump{
-  0%{width:10%}
-  100%{width:90%}
+/* BUTTONS */
+.buttons {
+  margin: 50px 0;
 }
 
-/* 🎰 ROULETTE */
-#roulette{
-  font-size:1.5rem;
-  margin-top:20px;
-  cursor:pointer;
-  animation:shake 0.3s infinite alternate;
+.btn {
+  padding: 18px 40px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin: 10px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  color: white;
+  background: rgba(0,0,0,0.6);
 }
 
-@keyframes shake{
-  from{transform:translateX(-3px)}
-  to{transform:translateX(3px)}
+.buy {
+  background: #bf0a30;
+  box-shadow: 0 0 40px rgba(191,10,48,0.9);
+  animation: buyMadness 0.9s infinite;
 }
 
-/* 🧠 BRAINROT */
-@media(max-width:768px){
-  body{
-    animation:brainrot 0.25s infinite alternate;
-  }
+@keyframes buyMadness {
+  0% { transform: scale(1) rotate(0); }
+  25% { transform: scale(1.1) rotate(-2deg); }
+  50% { transform: scale(1.15) rotate(2deg); }
+  75% { transform: scale(1.1) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0); }
 }
 
-@keyframes brainrot{
-  from{transform:scale(1)}
-  to{transform:scale(1.03) rotate(0.4deg)}
+/* TELEGRAM BLINK + HOT */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.telegram {
+  animation: blink 1s infinite;
+  position: relative;
+}
+
+.telegram::after {
+  content: "🔥 HOT";
+  position: absolute;
+  top: -12px;
+  right: -18px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+/* X SHAKE */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+.x-btn:hover {
+  animation: shake 0.3s infinite;
+}
+
+/* EMOJI */
+.emoji {
+  font-size: 40px;
+  animation: floatEmoji 1s infinite;
+  margin-top: 20px;
+}
+
+@keyframes floatEmoji {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* CA BOX */
+#ca-box {
+  margin: 30px auto;
+  font-size: 18px;
+  background: black;
+  padding: 12px;
+  border: 2px solid gold;
+  width: fit-content;
+}
+
+/* EAGLE */
+#eagle {
+  position: fixed;
+  top: 30%;
+  left: -220px;
+  width: 200px;
+  animation: fly 3s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes fly {
+  to { left: 110%; }
+}
+
+footer {
+  margin: 60px 0 30px;
+  opacity: 0.8;
+  font-size: 0.85rem;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🇺🇸 FLAG -->
-<video class="flag-video" autoplay muted loop playsinline>
-  <source src="flag.mp4" type="video/mp4">
-</video>
-<div class="overlay"></div>
+<div class="flag-bg"></div>
 
-<!-- 🦅 EAGLE -->
-<img id="eagle" src="eagle.png">
-<audio id="eagleSound" src="eagle.mp3"></audio>
+<img id="eagle" src="https://i.imgur.com/LZkQ9Qh.png">
+<audio id="eagleSound" src="https://www.myinstants.com/media/sounds/eagle.mp3"></audio>
 
-<h1>LatinasCan$tay</h1>
+<h1 class="glitch">LatinasCan$tay</h1>
 <p><strong>LC$ • Solana</strong></p>
 
-<div class="card">
-<p>She came for the vibes.<br>She stayed for the pump.</p>
-<p>No roadmap. No utility.<br>Just chaos.</p>
+<div class="hero">
+  <img src="hero.jpg">
 </div>
 
-<!-- 🔥 BUY -->
-<a class="buy" href="#">
-  BUY LC$
-  <img src="fire.gif">
-</a>
+<div class="tagline">
+  She stayed for the pump 💃📈🔥
+</div>
 
-<!-- 📈 FAKE CHART -->
-<div id="chart"></div>
+<div class="card">
+  <p>Latina$Can$tay isn’t a token — it’s a lifestyle warning.</p>
+  <p>No roadmap. No utility. Just chaos.</p>
+  <p>If she buys the dip, you buy too.</p>
+  <p>She won’t stay. But the chart might.</p>
+</div>
 
-<!-- 🎰 ROULETTE -->
-<div id="roulette">🎰 SPIN THE ROULETTE</div>
+<div class="buttons">
+  <a href="#" class="btn buy">BUY LC$ 💸</a>
+  <a href="https://x.com/DevWSFN?s=20" class="btn x-btn" target="_blank">X (Twitter)</a>
+  <a href="https://t.me/+rixEmmHG6XI1MDI0" class="btn telegram" target="_blank">Telegram</a>
+</div>
 
-<footer style="margin:40px;opacity:0.8">
-Enter at your own risk 💃📈🔥
+<div class="emoji">🦅💰🇺🇸</div>
+
+<div id="ca-box">
+  CA: <span id="ca">COMING SOON</span>
+</div>
+
+<footer>
+  🇺🇸 LC$ • Brainrot Certified
 </footer>
 
 <script>
-/* 🦅 SOUND + MUSIC UNLOCK */
-let activated=false;
-function activate(){
-  if(activated)return;
-  activated=true;
+window.onload = () => {
   document.getElementById("eagleSound").play();
-  setInterval(()=>window.scrollBy(0,2),25);
-}
-document.addEventListener("click",activate);
-document.addEventListener("touchstart",activate);
-
-/* 🎰 ROULETTE */
-document.getElementById("roulette").onclick=()=>{
-  alert(Math.random()>0.5?"✅ BUY":"💀 RUG");
 };
-
-/* 🤯 RANDOM GLITCH */
-setInterval(()=>{
-  document.body.style.animation="glitch 0.2s";
-  setTimeout(()=>document.body.style.animation="",200);
-},4000);
 </script>
 
 </body>
 </html>
-
